@@ -37,11 +37,16 @@ You can see the grid + nodes running by navigating to the following URL  your br
 Running the tests is simply a matter of running a maven build command:
 `mvn clean verify`
 
+
 ###Targeting test classes and specific tests:
 You can target test classes (ie: `GoogleTestIT`) by targeting them as parameters in the mvn command using the TestNG framework:
 Target specific test class: `mvn clean verify -Dtest=GoogleExampleIT`
 
 Target specific test in test class: `mvn clean verify -Dtest=GoogleExampleIT#googleCheeseExample`
+
+##Options
+You can change the default in the Configuration Properties section of the pom.xml, or pass them as runtime parameters.
+Here are some examples:
 
 ###Targeting a specific browser: 
 You can also target a specific browser: 
@@ -52,7 +57,8 @@ or
 
 `mvn clean verify -Dbrowser=chrome`
 
-##Running against a local binary
+###Running against a local binary
 `mvn clean verify -Dremote=false`
 
-##Running against local binary 
+###Running against local binary with headless mode off
+`mvn clean verify -Dremote=false -Dheadless=false`
