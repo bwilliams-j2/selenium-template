@@ -5,6 +5,7 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -26,6 +27,7 @@ public class DriverFactory {
     private final String proxyHostname = System.getProperty("proxyHost");
     private final Integer proxyPort = Integer.getInteger("proxyPort");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
+    private static String OS = System.getProperty("os.name").toLowerCase();
 
     public DriverFactory() {
         DriverType driverType = FIREFOX;
@@ -78,6 +80,15 @@ public class DriverFactory {
             desiredCapabilities.setCapability(PROXY, proxy);
         }
 
+
+        if(OS.equals("win")) {
+            System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\binaries\\windows\\googlechrome.64bit\\chromedriver.exe");
+            System.setProperty("webdriver.gecko.driver",  "src\\test\\resources\\binaries\\windows\\marionette.64bit\\geckodriver.exe");
+        } else if (OS.equals("mac os x")) {
+            System.setProperty("webdriver.chrome.driver", "src/test/resources/binaries/osx/googlechrome/64bit/chromedriver");
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/binaries/osx/marionette/64bit/geckodriver");
+        }
+
         if (useRemoteWebDriver) {
             URL seleniumGridURL = new URL(System.getProperty("gridURL"));
             String desiredBrowserVersion = System.getProperty("desiredBrowserVersion");
@@ -96,6 +107,8 @@ public class DriverFactory {
         } else {
             driver = driverType.getWebDriverObject(desiredCapabilities);
         }
+
+
     }
 
 }
