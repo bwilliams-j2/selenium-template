@@ -4,8 +4,11 @@ This is a general template to be used for frontend automation for J2 Global prod
 
 ### Powered by:
 Java (Maven)
+
 TestNG
+
 Selenium WebDriver 3
+
 Docker
 
 ## How To Use
@@ -33,22 +36,22 @@ If you'd like to see what the Selenium grid is doing, you can run the grid in in
 You can see the grid + nodes running by navigating to the following URL  your browser: http://localhost:4444/grid/console
 
 
-## Running Tests
+### Running Tests
 Running the tests is simply a matter of running a maven build command:
 `mvn clean verify`
 
 
-###Targeting test classes and specific tests:
+#### Targeting test classes and specific tests:
 You can target test classes (ie: `GoogleTestIT`) by targeting them as parameters in the mvn command using the TestNG framework:
 Target specific test class: `mvn clean verify -Dtest=GoogleExampleIT`
 
 Target specific test in test class: `mvn clean verify -Dtest=GoogleExampleIT#googleCheeseExample`
 
-##Options
+## Options
 You can change the default in the Configuration Properties section of the pom.xml, or pass them as runtime parameters.
 Here are some examples:
 
-###Targeting a specific browser: 
+### Targeting a specific browser: 
 You can also target a specific browser: 
 
 `mvn clean verify -Dbrowser=firefox`
@@ -57,8 +60,8 @@ or
 
 `mvn clean verify -Dbrowser=chrome`
 
-###Running against a local binary
+### Running against a local binary
 `mvn clean verify -Dremote=false`
 
-###Running against local binary with headless mode off
+### Running against local binary with headless mode off
 `mvn clean verify -Dremote=false -Dheadless=false`
