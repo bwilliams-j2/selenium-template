@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="smoke" thread-count="1" parallel="classes" >
+    <test name="prod">
+        <classes>
+            <class name="com.j2.faxqa.tests.GoogleExampleIT"></class>
+        </classes>
+    </test>
+</suite>
